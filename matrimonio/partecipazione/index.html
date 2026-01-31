@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roberto e Daria - 21.09.2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bg-music" loop preload="auto">
+  <source src="audio/viva-la-vida.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle" aria-label="Musica">🎵</button>
+
+<!-- LINGUA SWITCHER -->
+<div id="lang-switcher">
+  <button class="lang-btn active" data-lang="it" onclick="switchLang('it')">IT</button>
+  <button class="lang-btn" data-lang="uk" onclick="switchLang('uk')">УК</button>
+  <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+</div>
+
+<main id="experience-container">
+  <div id="envelope-layer">
+    <div class="envelope-mockup" onclick="openEnvelope()">
+      <img src="img/busta.jpg" alt="Busta partecipazione">
+    </div>
+    <p class="click-hint serif-font" data-i18n="open_invitation">Clicca per aprire l'invito</p>
+  </div>
+
+  <div id="card-container">
+    <div id="card-flipper">
+      <div class="card-front">
+        <div id="vellum-overlay" onclick="revealPhoto()">
+          <div id="tap-hint">
+            <div class="tap-ring"></div>
+            <div class="tap-ring"></div>
+            <div class="tap-ring"></div>
+            <div class="tap-dot"></div>
+          </div>
+        </div>
+        <div id="flip-button-container">
+          <button class="btn-flip" onclick="flipCard()" data-i18n="read_details">Leggi i dettagli ↻</button>
+        </div>
+      </div>
+
+      <div class="card-back">
+        <div style="position: absolute; bottom: 20px; width: 100%; text-align: center; left:0;">
+          <button class="btn-flip" onclick="flipCard()" data-i18n="back_to_photo">Torna alla foto ↻</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="scroll-hint" class="click-hint serif-font" data-i18n="scroll" style="opacity:0; visibility:hidden;">SCORRI ↓</p>
+</main>
+
+<!-- RSVP -->
+<section id="rsvp" class="content-section">
+  <h2 class="section-title script-font" data-i18n="rsvp_title">Gradita Conferma</h2>
+  <form class="rsvp-form" action="https://formspree.io/f/xdazqnoo" method="POST">
+    <input type="text" name="nomi" required data-i18n-placeholder="rsvp_names" placeholder="Nomi degli invitati">
+    <select name="presenza" required>
+      <option value="">Parteciperete?</option>
+      <option value="si">Sì, con gioia!</option>
+      <option value="no">Purtroppo no</option>
+    </select>
+    <textarea name="note" rows="4" data-i18n-placeholder="rsvp_notes" placeholder="Allergie o messaggi per noi"></textarea>
+    <button type="submit" class="btn-submit serif-font" data-i18n="rsvp_submit">Invia Conferma</button>
+  </form>
+</section>
+
+<!-- LOCATION -->
+<section class="content-section">
+  <h2 class="section-title script-font" data-i18n="location_title">La Location</h2>
+  <p class="serif-font" data-i18n="location_name">AQUAMADRE - Triflisco (CE)</p>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5175.413091838201!2d14.244660737511328!3d41.13617394222184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133af966f3589dd5%3A0xb1b0e38c03b8fc0c!2sAquamadre%20-%20Natura%20d&#39;eventi!5e1!3m2!1sit!2sus!4v1769890550246!5m2!1sit!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <a href="https://www.google.com/maps/dir//Aquamadre+-+Natura+d'Events,+SP333,+81041+Triflisco+CE,+Italia/@41.1361739,14.2446607,1188m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x133af966f3589dd5:0xb1b0e38c03b8fc0c!2m2!1d14.2503776!2d41.1347821?hl=it-IT&entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="directions-link serif-font" data-i18n="get_directions">Ottieni indicazioni →</a>
+</section>
+
+<!-- WEEKEND -->
+<section class="content-section">
+  <h2 class="section-title script-font" data-i18n="weekend_title">Weekend a Caserta e Dintorni</h2>
+  <p class="weekend-intro serif-font" data-i18n="weekend_intro">
+    Dato che festeggeremo di lunedì, ecco qualche idea per godervi il weekend precedente nella nostra zona!
+  </p>
+
+  <div class="weekend-block">
+
+    <!-- SABATO -->
+    <div class="weekend-day">
+      <h3 class="weekend-day-title serif-font" data-i18n="saturday">Sabato</h3>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">🏛️</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="reggia_title">La Reggia di Caserta</strong>
+          <p data-i18n="reggia_desc">Imperdibile. Dedicate almeno mezza giornata per visitare gli appartamenti reali e lo splendido parco.</p>
+        </div>
+      </div>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">🏘️</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="casertavecchia_title">Casertavecchia</strong>
+          <p data-i18n="casertavecchia_desc">Un borgo medievale sospeso nel tempo, perfetto per una passeggiata romantica tra vicoli e panorami.</p>
+        </div>
+      </div>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">🧵</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="sanleucio_title">San Leucio</strong>
+          <p data-i18n="sanleucio_desc">Il Belvedere reale e la storia della seta, patrimonio UNESCO.</p>
+        </div>
+      </div>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">🍽️</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="eat_saturday_title">Dove mangiare</strong>
+          <p data-i18n-html="eat_saturday_desc">
+            <em>🍕 I Masanielli – Francesco Martucci</em> — Una delle migliori pizzerie d'Italia, tecnica e creatività ai massimi livelli.<br>
+            <em>🍕 Martorano</em> — Tradizione e qualità nel cuore di Caserta.<br>
+            <em>🍕 Ciccio Vitiello</em> — Pizza contemporanea e grande ricerca sulle materie prime.<br>
+            <em>🍕 Pizza Guys</em> — Informale, giovane e sorprendente.<br><br>
+            <em>🥩 Dogana Golosa (San Leucio)</em> — Braceria di altissimo livello: carni selezionate, tagli pregiati e cotture impeccabili. Perfetta per gli amanti della carne e delle atmosfere rustico-eleganti.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="weekend-divider"></div>
+
+    <!-- DOMENICA -->
+    <div class="weekend-day">
+      <h3 class="weekend-day-title serif-font" data-i18n="sunday">Domenica</h3>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">🌊</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="naples_title">Una giornata a Napoli</strong>
+          <p data-i18n="naples_desc">
+            A circa 40 minuti da Caserta, Napoli è perfetta per una gita in giornata.
+            Consigliamo una passeggiata tra il centro storico, Spaccanapoli, il Lungomare
+            e una sosta golosa.
+          </p>
+
+          <div class="weekend-card-content">
+            <strong data-i18n="eat_sunday_title">🍽️ Dove mangiare</strong>
+            <p data-i18n-html="eat_sunday_desc">
+              <em>🍕 Carmnella</em> — Pizza storica, sapori autentici e atmosfera verace.<br>
+              <em>🍕 Pellone</em> — Storico locale dall'atmosfera vintage che serve pizze tradizionali e creative cotte in forno a legna.<br>
+              <em>🥩 Antonio La Trippa</em> — Tempio della cucina tradizionale napoletana: trippa, genovese e piatti di sostanza, ricchi di sapore e storia.<br>
+              <em>🍝 Tandem</em> — Il regno del ragù napoletano: lento, intenso, emozionale. Ideale per assaggiare uno dei piatti simbolo della città. (Qui si può provare anche O'CUZZETIELLO)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="weekend-card">
+        <span class="weekend-card-icon">😌</span>
+        <div class="weekend-card-content">
+          <strong data-i18n="relax_title">Oppure… relax</strong>
+          <p data-i18n="relax_desc">Se preferite, domenica è anche il giorno perfetto per ricaricarsi prima della festa!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <img src="img/Logo Matrimonio.png" alt="Logo RD" style="width: 100px;">
+  <p class="script-font" style="font-size: 1.5rem;">Roberto e Daria</p>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script>
+  function openEnvelope() {
+    document.getElementById('envelope-layer').style.opacity = '0';
+    setTimeout(() => { document.getElementById('envelope-layer').style.visibility = 'hidden'; }, 800);
+  }
+  function revealPhoto() {
+    document.getElementById('vellum-overlay').style.opacity = '0';
+    document.getElementById('vellum-overlay').style.pointerEvents = 'none';
+    document.getElementById('tap-hint').style.display = 'none';
+    setTimeout(() => {
+      const btn = document.getElementById('flip-button-container');
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }, 500);
+  }
+  function flipCard() {
+    const flipper = document.getElementById('card-flipper');
+    flipper.classList.toggle('flipped');
+    const scrollHint = document.getElementById('scroll-hint');
+    if (flipper.classList.contains('flipped')) {
+      scrollHint.style.visibility = 'visible';
+      scrollHint.style.opacity = '1';
+    } else {
+      scrollHint.style.opacity = '0';
+      scrollHint.style.visibility = 'hidden';
+    }
+  }
+</script>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const btnMusic = document.getElementById('music-toggle');
+
+  let fadeInterval = null;
+  audio.volume = 0; // partiamo in silenzio
+
+  function fadeInAudio(targetVolume = 0.25, duration = 4000) {
+    const steps = 40;
+    const stepTime = duration / steps;
+    const volumeStep = targetVolume / steps;
+
+    clearInterval(fadeInterval);
+    fadeInterval = setInterval(() => {
+      if (audio.volume < targetVolume) {
+        audio.volume = Math.min(audio.volume + volumeStep, targetVolume);
+      } else {
+        clearInterval(fadeInterval);
+      }
+    }, stepTime);
+  }
+
+  // ▶️ PARTE SOLO QUANDO SI APRE LA BUSTA
+  function startMusicFromEnvelope() {
+    if (localStorage.getItem('music') === 'off') return;
+
+    audio.play()
+      .then(() => fadeInAudio())
+      .catch(() => {});
+  }
+
+  // Override elegante della funzione esistente
+  const originalOpenEnvelope = openEnvelope;
+  openEnvelope = function () {
+    originalOpenEnvelope();
+    startMusicFromEnvelope();
+  };
+
+  // Pulsante ON / OFF manuale
+  btnMusic.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (audio.paused) {
+      audio.volume = 0;
+      audio.play();
+      fadeInAudio();
+      btnMusic.classList.remove('off');
+      localStorage.setItem('music', 'on');
+    } else {
+      audio.pause();
+      btnMusic.classList.add('off');
+      localStorage.setItem('music', 'off');
+    }
+  });
+
+  // Stato iniziale
+  if (localStorage.getItem('music') === 'off') {
+    btnMusic.classList.add('off');
+  }
+</script>
+
+</body>
+</html>
