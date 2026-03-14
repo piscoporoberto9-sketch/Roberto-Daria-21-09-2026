@@ -197,17 +197,40 @@
     }, 500);
   }
   function flipCard() {
-    const flipper = document.getElementById('card-flipper');
-    flipper.classList.toggle('flipped');
-    const scrollHint = document.getElementById('scroll-hint');
-    if (flipper.classList.contains('flipped')) {
-      scrollHint.style.visibility = 'visible';
-      scrollHint.style.opacity = '1';
-    } else {
-      scrollHint.style.opacity = '0';
-      scrollHint.style.visibility = 'hidden';
+  const flipper = document.getElementById('card-flipper');
+  const scrollHint = document.getElementById('scroll-hint');
+  const btnContainer = document.getElementById('flip-button-container'); // Assicurati che l'ID sia corretto
+
+  flipper.classList.toggle('flipped');
+
+  if (flipper.classList.contains('flipped')) {
+    // Gestione Scroll Hint
+    scrollHint.style.visibility = 'visible';
+    scrollHint.style.opacity = '1';
+
+    // FIX PER MOBILE: Nascondi il bottone durante la rotazione
+    if (btnContainer) {
+      btnContainer.style.opacity = '0';
+      btnContainer.style.pointerEvents = 'none';
+      // Dopo 300ms (a metà rotazione) lo rimuoviamo del tutto
+      setTimeout(() => {
+        btnContainer.style.display = 'none';
+      }, 300);
+    }
+  } else {
+    // Se decidessi di girarla di nuovo al fronte
+    scrollHint.style.opacity = '0';
+    scrollHint.style.visibility = 'hidden';
+
+    if (btnContainer) {
+      btnContainer.style.display = 'block';
+      setTimeout(() => {
+        btnContainer.style.opacity = '1';
+        btnContainer.style.pointerEvents = 'auto';
+      }, 10);
     }
   }
+}
 </script>
 
 <script>
